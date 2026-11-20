@@ -1,0 +1,4 @@
+- insert:
+    - id: prompt-pilot
+      name: '@local/prompt-pilot'
+      config: {}

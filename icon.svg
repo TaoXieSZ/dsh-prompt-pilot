@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" role="img" aria-label="Prompt Pilot">
+  <defs>
+    <linearGradient id="pp-mark" x1="6" y1="30" x2="30" y2="6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2f6df6"/>
+      <stop offset="1" stop-color="#37c0b0"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="34" height="34" rx="10" fill="url(#pp-mark)"/>
+  <path d="M11 23.5 15.2 12.6 26 16.4 20.1 20.6Z" fill="#ffffff" fill-opacity="0.96"/>
+  <path d="M20.1 20.6 26 16.4 17.4 25.2Z" fill="#ffffff" fill-opacity="0.66"/>
+  <circle cx="26.4" cy="9.6" r="1.7" fill="#ffffff" fill-opacity="0.9"/>
+  <circle cx="9.4" cy="18.2" r="1.1" fill="#ffffff" fill-opacity="0.6"/>
+</svg>

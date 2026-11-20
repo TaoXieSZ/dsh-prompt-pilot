@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Prompt Pilot",
+    "description": "Suggests context-aware next steps above the composer. Repository signals (an interrupted turn, an open pull request, a dirty worktree) and model-written prompts appear as one-click chips: picking one fills the composer, and a pull request opens its diff in the right sidebar.",
+    "detail": "docs/DETAIL.md"
+  }
+}
