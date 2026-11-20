@@ -17,6 +17,22 @@ with repository signals first.
 | **Review changes** | `git status --porcelain` is non-empty | Fills a review request naming the count |
 | **Model prompts** | Written against the same signals and the last few messages, only while the row is on screen | Fills the composer |
 
+## Install
+
+This is a DeepSeek Harness bundle: a `package.json` that declares `dsh.bundle.patch`, a Host
+plugin (`index.js`), and a browser module (`client.js`). The `@local/prompt-pilot` scope is
+deliberate — the package is meant to be installed from a directory, not published to npm.
+
+```sh
+git clone https://github.com/TaoXieSZ/dsh-prompt-pilot.git
+```
+
+Then install the cloned directory as a bundle, either from **Plugins → Add plugin** in the app, or
+by asking the agent to install the local directory. Enable the **Prompt Pilot** row and reload the
+page; the row appears above the message box in every Session.
+
+To remove it, disable the row or remove the bundle from the same page.
+
 ## Layout
 
 ```
