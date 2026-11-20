@@ -1,0 +1,50 @@
+# Every push to main and every pull request runs the bundle checks and the Host
+# integration tests on the current Node lines.
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bundle:
+    name: bundle + host tests (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22', '24']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # Both halves are plain JavaScript with no build step, so a parse error is
+      # the whole class of defect a compiler would otherwise catch.
+      - name: Syntax check both halves
+        run: |
+          node --check index.js
+          node --check client.js
+          node --check test/host.test.mjs
+          node --check scripts/check.mjs
+
+      - name: Bundle manifest, locales and assets
+        run: node scripts/check.mjs
+
+      # The suite builds its own throwaway git repository, so it needs no
+      # fixtures, no network, and no GitHub CLI.
+      - name: Host integration tests
+        run: node test/host.test.mjs

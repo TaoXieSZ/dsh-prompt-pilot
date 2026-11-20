@@ -18,7 +18,8 @@
     "docs",
     "icon.svg",
     "README.md",
-    "test"
+    "test",
+    "scripts"
   ],
   "dsh": {
     "bundle": {
