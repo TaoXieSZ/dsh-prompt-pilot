@@ -71,9 +71,19 @@ throws on reading a service the context did not inject.
 
 ## Tests
 
-`node test/host.test.mjs` drives the real Host module through a fake context and a throwaway git
+```sh
+node scripts/check.mjs     # manifest, shipped files, locale parity, display assets
+node test/host.test.mjs    # the Host half, end to end
+```
+
+`test/host.test.mjs` drives the real Host module through a fake context and a throwaway git
 repository: resume detection, the rail cap, repository facts, model parsing, and every degradation
-path (no model, prose reply, unknown session, no pull request).
+path (no model, prose reply, unknown session, no pull request). `scripts/check.mjs` catches the
+class of mistake that would otherwise only fail at install or load time — a `files` entry pointing
+nowhere, a locale missing a key, an icon the Plugin Manager cannot read.
+
+Both run in CI on Node 20, 22 and 24 for every push and pull request
+(`.github/workflows/checks.yml`).
 
 ## Diagnosing "I don't see the row"
 
